@@ -38,9 +38,7 @@ class MainActivity : AppCompatActivity(), OnFormListener {
     override fun onRegister() {
         viewPager.currentItem = 0
     }
-    override fun onLogin() {
-        viewPager.currentItem = 0
-    }override fun toRegister() {
+    override fun toRegister() {
         viewPager.currentItem = 1
     }
 }
