@@ -4,6 +4,9 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="Base.Theme.TabLayout.WithActionBar" parent="Theme.Material3.DayNight">
+    </style>
 
     <style name="Theme.TabLayout" parent="Base.Theme.TabLayout" />
+    <style name="Theme.TabLayout.WithActionBar" parent="Base.Theme.TabLayout.WithActionBar" />
 </resources>
