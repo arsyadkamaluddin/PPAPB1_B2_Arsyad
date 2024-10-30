@@ -1,4 +1,4 @@
-package com.example.bottomnavigation
+package site.disyfa.bottomnavigation
 
 import org.junit.Test
 
