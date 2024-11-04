@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginVertical="32dp" />
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounder_background">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/baseline_person_24" />
+        <EditText
+            android:autofillHints="name"
+            android:id="@+id/inputName"
+            android:layout_width="290sp"
+            android:layout_height="wrap_content"
+            android:hint="Nama"
+            android:layout_marginLeft="10dp"
+            android:inputType="text"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <!-- Email EditText -->
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounder_background">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/baseline_email_24" />
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="290sp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <!-- Phone EditText -->
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounder_background">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/baseline_local_phone_24"/>
+        <EditText
+            android:autofillHints="phone"
+            android:id="@+id/inputNomor"
+            android:layout_width="290sp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:hint="Telepon"
+            android:inputType="phone"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <!-- Password EditText -->
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounder_background">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/baseline_lock_24"/>
+        <EditText
+            android:autofillHints="phone"
+            android:id="@+id/inputPassword"
+            android:layout_width="290sp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="@null"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounder_background">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/baseline_transgender_24"/>
+        <Spinner
+            android:id="@+id/inputGender"
+            android:layout_width="290sp"
+            android:layout_height="wrap_content"
+            android:entries="@array/kelamin"
+            />
+    </LinearLayout>
+
+
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/btnDaftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daftar"
+        android:textColor="@color/white"
+        android:background="@drawable/rounder_background_blue"
+        android:layout_marginTop="72dp"/>
+
+    <!-- Register TextView -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sudah mempunyai akun ?"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginStart="5dp"/>
+        <TextView
+            android:id="@+id/btnToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masuk"
+            android:textSize="14sp"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
