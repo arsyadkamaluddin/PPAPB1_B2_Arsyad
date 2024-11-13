@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val adapterDisaster = ImageAdapter(this, itemCount = 24)
+        val adapterDisaster = ImageAdapter(this, itemCount = 125)
         with(binding){
             rvImages.apply {
                 adapter = adapterDisaster
