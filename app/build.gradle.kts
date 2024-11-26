@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "site.disyfa.sharedpreferences"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "site.disyfa.sharedpreferences"
@@ -15,6 +15,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures{
+        viewBinding = true
     }
 
     buildTypes {
