@@ -1,6 +1,5 @@
 package site.disyfa.retrofit
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import site.disyfa.retrofit.databinding.ItemNewsBinding
 import site.disyfa.retrofit.model.News
 
 class NewsAdapter (private val newsList: List<News>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>(){
@@ -19,16 +17,13 @@ class NewsAdapter (private val newsList: List<News>) : RecyclerView.Adapter<News
         val textTitle: TextView = itemView.findViewById(R.id.title_item)
         val textDescription: TextView = itemView.findViewById(R.id.desc_item)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return NewsViewHolder(view)
     }
-
     override fun getItemCount(): Int {
         return newsList.size
     }
-
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = newsList[position]
         holder.textTitle.text = news.title
@@ -41,6 +36,5 @@ class NewsAdapter (private val newsList: List<News>) : RecyclerView.Adapter<News
         Glide.with(holder.itemView.context)
             .load(news.thumbnail)
             .into(holder.imageNews)
-//        holder.bind(newsList[position])
     }
 }
