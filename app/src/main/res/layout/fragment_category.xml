@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CategoryFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/category_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edt_category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Kategori"/>
+        <Spinner
+            android:id="@+id/spIcon"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginTop="16dp"
+            android:spinnerMode="dropdown" />
+        <Spinner
+            android:id="@+id/spColour"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginTop="16dp"
+            android:spinnerMode="dropdown" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Kategori"
+            android:layout_marginTop="30dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_categories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

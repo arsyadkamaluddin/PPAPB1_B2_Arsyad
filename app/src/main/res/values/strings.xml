@@ -1,3 +1,72 @@
 <resources>
     <string name="app_name">Money Management</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="colour_names">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Indigo</item>
+        <item>Violet</item>
+        <item>Blue Grey</item>
+        <item>PayPal</item>
+    </string-array>
+    <string-array name="category_names">
+        <item>Bar</item>
+        <item>Light Bulb</item>
+        <item>Light Bulb On</item>
+        <item>Power</item>
+        <item>Business</item>
+        <item>Cake</item>
+        <item>Camera</item>
+        <item>Cloud</item>
+        <item>Laptop</item>
+        <item>Phone</item>
+        <item>Servers</item>
+        <item>Storage</item>
+        <item>Fridge</item>
+        <item>Child</item>
+        <item>People</item>
+        <item>Person</item>
+        <item>Cafe</item>
+        <item>Cinema</item>
+        <item>Dining</item>
+        <item>Event</item>
+        <item>Florist</item>
+        <item>Home</item>
+        <item>Hotel</item>
+        <item>Mail</item>
+        <item>Pharmacy</item>
+        <item>Pizza</item>
+        <item>Receipt</item>
+        <item>Restaurant</item>
+        <item>School</item>
+        <item>Basket</item>
+        <item>Cart</item>
+        <item>Online store</item>
+        <item>Store</item>
+        <item>Golf</item>
+        <item>Swim</item>
+        <item>Stationary</item>
+        <item>Printer</item>
+        <item>DVR</item>
+        <item>Movie</item>
+        <item>Music</item>
+        <item>On-demand</item>
+        <item>Radio</item>
+        <item>Subscriptions</item>
+        <item>Book</item>
+        <item>Ticket</item>
+        <item>Bus</item>
+        <item>Car</item>
+        <item>Flight</item>
+        <item>Motorbike</item>
+        <item>EV Station</item>
+        <item>Gas Station</item>
+        <item>Subway</item>
+        <item>Taxi</item>
+        <item>Train</item>
+        <item>Work</item>
+    </string-array>
 </resources>

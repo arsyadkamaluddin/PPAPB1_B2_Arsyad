@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#8E8E8E</color>
+    <color name="blue">#2196F3</color>
+    <color name="transaction_box">#D2D2E6</color>
+    <color name="form_box">#D2D2E6</color>
+    <color name="blackText">#222222</color>
+    <color name="greyText">#727272</color>
+    <color name="buttonLink">#1565C0</color>
+    <color name="fabComplete">#7587b7</color>
+    <color name="navBackground">#448B67</color>
+    <color name="colorPrimary">#5d9e7a</color>
+    <color name="colorPrimaryLight">#8dcfa9</color>
+    <color name="colorPrimaryDark">#2e6f4e</color>
+    <color name="colorAccent">#7587b7</color>
+    <color name="colorAccentLight">#a5b7e9</color>
+    <color name="colorAccentDark">#475a87</color>
+    <color name="colorRedBackground">#AA2121</color>
+
 </resources>
