@@ -27,6 +27,7 @@ import site.disyfa.moneymanagement.model.ApiCategory
 import site.disyfa.moneymanagement.model.Category
 import site.disyfa.moneymanagement.network.ApiClient
 import site.disyfa.moneymanagement.network.SingleResponse
+import site.disyfa.moneymanagement.util.DBInitializer
 import site.disyfa.moneymanagement.util.IconManager
 import site.disyfa.moneymanagement.util.IconSpinner
 import site.disyfa.moneymanagement.util.StringGenerator
@@ -78,14 +79,15 @@ class CategoryFragment : Fragment() {
 
             progressBar.postDelayed({
                 progressBar.visibility = View.GONE
-            }, 10000)
+                btnAddCategory.visibility = View.VISIBLE
+            }, 2000)
 
             category.name = view.findViewById<EditText>(R.id.edt_category_name).text.toString()
+            executorService.execute{mCategoryDao.insert(Category(StringGenerator.generateUUIDString(),category.user_id,category.name,category.icon,category.colour))}
             ApiClient.getInstance().postCategory(category).enqueue(object :
                 Callback<SingleResponse> {
                 override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
                     if (response.isSuccessful) {
-                        executorService.execute{mCategoryDao.insert(Category(StringGenerator.generateUUIDString(),category.user_id,category.name,category.icon,category.colour))}
                     } else {
                         Log.e("API", "Error: ${response.message()}")
                     }

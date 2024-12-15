@@ -90,9 +90,9 @@ class AddFragment : Fragment() {
             ApiClient.getInstance().postTransaction(transaction).enqueue(object :
                 Callback<SingleResponse> {
                 override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
+                    DBInitializer(requireActivity().application).syncTransaction()
                     if (response.isSuccessful) {
                         requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.homeFragment)
-                        DBInitializer(requireActivity().application).syncTransaction()
                     } else {
                         Log.e("API", "Error: ${response.message()}")
                     }

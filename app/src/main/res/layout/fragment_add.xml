@@ -36,6 +36,7 @@
             android:hint="Nominal"
             android:background="@drawable/transaction_box"
             android:textStyle="bold"
+            android:inputType="number"
             android:backgroundTint="@color/white"
             android:paddingVertical="10dp"
             android:paddingHorizontal="15dp"

@@ -45,7 +45,8 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.visibility = View.GONE
             progressBar.postDelayed({
                 progressBar.visibility = View.GONE
-            }, 2000)
+                btnLogin.visibility = View.VISIBLE
+            }, 1000)
             val edtEmail: EditText = findViewById(R.id.edt_email)
             val edtPassword: EditText = findViewById(R.id.edt_password)
             validateUser(edtEmail.text.toString(), edtPassword.text.toString()) { isValid ->

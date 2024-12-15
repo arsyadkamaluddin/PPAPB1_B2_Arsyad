@@ -81,6 +81,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         getTransactions(view.findViewById<TextView>(R.id.tv_outcome_nominal))
 
+
     }
 
     override fun onResume() {

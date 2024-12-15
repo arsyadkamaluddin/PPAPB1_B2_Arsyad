@@ -52,6 +52,7 @@ class EditActivity : AppCompatActivity() {
         val categorySpinner = findViewById<Spinner>(R.id.spCategory)
         val cbIncome = findViewById<CheckBox>(R.id.cb_income)
         val btnAddTransaction = findViewById<AppCompatButton>(R.id.btn_add_transaction)
+        val btnDelTransaction = findViewById<AppCompatButton>(R.id.btn_delete_transaction)
         var oldTransaction: Transaction = Transaction("",sharedPreferences.getString("user_id",null),0,"outcome","","")
         var newTransaction: ApiTransaction = ApiTransaction(sharedPreferences.getString("user_id",null),0,"outcome","","")
         lateinit var categoryList: List<Category>
@@ -92,6 +93,33 @@ class EditActivity : AppCompatActivity() {
                 }
 
             }
+        }
+
+        btnDelTransaction.setOnClickListener {
+            val progressBar = findViewById<ProgressBar>(R.id.progressBarDelete)
+            progressBar.visibility = View.VISIBLE
+            btnDelTransaction.visibility = View.GONE
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 6000)
+
+            ApiClient.getInstance().deleteTransaction(transactionId).enqueue(object :
+                Callback<SingleResponse> {
+                override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
+                    if (response.isSuccessful) {
+                        executorService.execute{ mTransactionDao.delete(oldTransaction)}
+                        val intent = Intent(this@EditActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Log.e("API", "Error: ${response.message()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
+                    Log.e("API", "Failure: ${t.message}")
+                }
+            })
         }
 
         btnAddTransaction.setOnClickListener {

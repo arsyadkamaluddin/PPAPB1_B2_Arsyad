@@ -17,6 +17,9 @@ interface TransactionDao {
     @Update
     fun update(transaction: Transaction)
 
+    @Delete
+    fun delete(transaction: Transaction)
+
     @Query("DELETE FROM transaction_table")
     fun deleteAllTransactions()
 

@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nominal"
+            android:inputType="number"
             android:background="@drawable/transaction_box"
             android:textStyle="bold"
             android:backgroundTint="@color/white"
@@ -77,6 +78,20 @@
             android:text="Simpan"/>
         <ProgressBar
             android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete_transaction"
+            android:backgroundTint="@color/colorRedBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Hapus"/>
+        <ProgressBar
+            android:id="@+id/progressBarDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
