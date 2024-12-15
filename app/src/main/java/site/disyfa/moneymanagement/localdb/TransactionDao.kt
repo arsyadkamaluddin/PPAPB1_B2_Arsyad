@@ -7,7 +7,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import site.disyfa.moneymanagement.model.Category
 import site.disyfa.moneymanagement.model.Transaction
 
 @Dao

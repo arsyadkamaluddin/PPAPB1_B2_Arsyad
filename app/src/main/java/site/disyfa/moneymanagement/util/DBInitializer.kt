@@ -22,17 +22,14 @@ class DBInitializer(application: Application) {
     private val client = ApiClient.getInstance()
 
     init {
-        // Memastikan menggunakan aplikasi context untuk database
         val db = AppRoomDatabase.getDatabase(application)
         mTransactionDao = db!!.transactionDao()!!
         mCategoryDao = db!!.categoryDao()!!
         mUserDao = db!!.userDao()!!
 
-        // ExecutorService untuk memastikan database beroperasi di thread terpisah
         executorService = Executors.newSingleThreadExecutor()
     }
 
-    // Fungsi untuk menghapus semua data di Room
     fun deleteAllRoomData() {
         executorService.execute {
             mTransactionDao.deleteAllTransactions()
@@ -41,9 +38,7 @@ class DBInitializer(application: Application) {
         }
     }
 
-    // Fungsi untuk mengambil data dari API dan memasukkan ke dalam Room
     fun getAllDatabaseData() {
-        // Ambil data pengguna
         val userResponse = client.getUsers()
         userResponse.enqueue(object : Callback<List<User>> {
             override fun onResponse(p0: Call<List<User>>, p1: Response<List<User>>) {
@@ -57,11 +52,9 @@ class DBInitializer(application: Application) {
             }
 
             override fun onFailure(p0: Call<List<User>>, p1: Throwable) {
-                // Penanganan gagal
             }
         })
 
-        // Ambil data transaksi
         val transactionResponse = client.getTransactions()
         transactionResponse.enqueue(object : Callback<List<Transaction>> {
             override fun onResponse(p0: Call<List<Transaction>>, p1: Response<List<Transaction>>) {
@@ -75,7 +68,6 @@ class DBInitializer(application: Application) {
             }
 
             override fun onFailure(p0: Call<List<Transaction>>, p1: Throwable) {
-                // Penanganan gagal
             }
         })
 
@@ -93,15 +85,13 @@ class DBInitializer(application: Application) {
             }
 
             override fun onFailure(p0: Call<List<Category>>, p1: Throwable) {
-                // Penanganan gagal
             }
         })
     }
 
-    // Fungsi untuk mensinkronkan semua data
     fun syncDatabase() {
-        deleteAllRoomData() // Hapus semua data lama
-        getAllDatabaseData() // Ambil dan simpan data terbaru
+        deleteAllRoomData()
+        getAllDatabaseData()
     }
     fun syncTransaction(){
         executorService.execute {
@@ -141,7 +131,6 @@ class DBInitializer(application: Application) {
             }
 
             override fun onFailure(p0: Call<List<User>>, p1: Throwable) {
-                // Penanganan gagal
             }
         })
     }
@@ -162,7 +151,6 @@ class DBInitializer(application: Application) {
             }
 
             override fun onFailure(p0: Call<List<Category>>, p1: Throwable) {
-                // Penanganan gagal
             }
         })
     }

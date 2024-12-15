@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="20dp"
+    android:background="@color/colorAccentDark"
     tools:context=".ui.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello, Arsyad"
+            android:textColor="@color/white"
             android:layout_marginTop="40dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -31,8 +33,11 @@
             android:text="Pengeluaran hari ini"
             android:textSize="12dp"
             android:textAlignment="center"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/white"
             android:textStyle="italic"/>
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/tv_outcome_nominal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,13 +47,12 @@
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/tv_date"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="20 Desember 2024"
             android:textStyle="bold"
-            android:textColor="@color/material_dynamic_secondary50"
             android:layout_marginTop="40dp"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_transaction"
             android:layout_marginTop="10dp"

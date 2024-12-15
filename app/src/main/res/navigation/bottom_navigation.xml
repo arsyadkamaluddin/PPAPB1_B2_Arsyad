@@ -13,25 +13,25 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="site.disyfa.moneymanagement.ui.CategoryFragment"
-        android:label="fragment_category"
+        android:label="fragment_kategori"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/addFragment"
         android:name="site.disyfa.moneymanagement.ui.AddFragment"
-        android:label="fragment_add"
+        android:label="fragment_tambah"
         tools:layout="@layout/fragment_add" />
     <fragment
         android:id="@+id/allFragment"
         android:name="site.disyfa.moneymanagement.ui.AllFragment"
-        android:label="fragment_all"
+        android:label="fragment_riwayat"
         tools:layout="@layout/fragment_all" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="site.disyfa.moneymanagement.ui.ProfileFragment"
-        android:label="fragment_all"
+        android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/logoutFragment"
-        android:label="fragment_all"
+        android:label="fragment_logout"
         tools:layout="@layout/fragment_profile" />
 </navigation>

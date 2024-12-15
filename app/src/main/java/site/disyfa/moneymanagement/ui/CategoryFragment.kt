@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.Observer
@@ -26,15 +27,12 @@ import site.disyfa.moneymanagement.model.ApiCategory
 import site.disyfa.moneymanagement.model.Category
 import site.disyfa.moneymanagement.network.ApiClient
 import site.disyfa.moneymanagement.network.SingleResponse
-import site.disyfa.moneymanagement.util.DBInitializer
 import site.disyfa.moneymanagement.util.IconManager
 import site.disyfa.moneymanagement.util.IconSpinner
 import site.disyfa.moneymanagement.util.StringGenerator
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -44,8 +42,6 @@ class CategoryFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var mCategoryDao: CategoryDao
     private lateinit var executorService: ExecutorService
-
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -76,6 +72,14 @@ class CategoryFragment : Fragment() {
         val colourSpinner = view.findViewById<Spinner>(R.id.spColour)
         val btnAddCategory = view.findViewById<AppCompatButton>(R.id.btn_add_category)
         btnAddCategory.setOnClickListener{
+            val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+            btnAddCategory.visibility = View.GONE
+
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 10000)
+
             category.name = view.findViewById<EditText>(R.id.edt_category_name).text.toString()
             ApiClient.getInstance().postCategory(category).enqueue(object :
                 Callback<SingleResponse> {
@@ -128,7 +132,6 @@ class CategoryFragment : Fragment() {
             }
         }
 
-        // Add selected colour to category object
         colourSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
@@ -147,7 +150,6 @@ class CategoryFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        var listCategories = mutableListOf<Category>()
         val userId: String? = sharedPreferences.getString("user_id",null)
         mCategoryDao.getCategories(userId).observe(this, Observer { category ->
             adapter = CategoryAdapter(requireContext(),category)
@@ -158,15 +160,6 @@ class CategoryFragment : Fragment() {
 
     }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CategoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             CategoryFragment().apply {

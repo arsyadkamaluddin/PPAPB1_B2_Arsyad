@@ -3,8 +3,10 @@ package site.disyfa.moneymanagement.ui
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -38,6 +40,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnLogin.setOnClickListener {
+            val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+            btnLogin.visibility = View.GONE
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 2000)
             val edtEmail: EditText = findViewById(R.id.edt_email)
             val edtPassword: EditText = findViewById(R.id.edt_password)
             validateUser(edtEmail.text.toString(), edtPassword.text.toString()) { isValid ->

@@ -1,6 +1,5 @@
 package site.disyfa.moneymanagement.ui
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.Observer
@@ -27,16 +27,8 @@ import site.disyfa.moneymanagement.network.SingleResponse
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -64,7 +56,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -79,11 +70,12 @@ class ProfileFragment : Fragment() {
         })
 
         btnSaveUser.setOnClickListener {
-//            val editor = sharedPreferences.edit()
-//            editor.putString("user_id", newUser.id)
-//            editor.putString("name", newUser.name)
-//            editor.putString("email", newUser.email)
-//            editor.apply()
+            val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+            btnSaveUser.visibility = View.GONE
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 10000)
             newUser.name = view.findViewById<EditText>(R.id.edt_fullname).text.toString()
             newUser.email = view.findViewById<EditText>(R.id.edt_email).text.toString()
             newUser.password = view.findViewById<EditText>(R.id.edt_password).text.toString()
@@ -98,7 +90,6 @@ class ProfileFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
-                    // Tangani kegagalan (misalnya, jaringan error)
                     Log.e("API", "Failure: ${t.message}")
                 }
             })
@@ -112,15 +103,6 @@ class ProfileFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ProfileFragment().apply {

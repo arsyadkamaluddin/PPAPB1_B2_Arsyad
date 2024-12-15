@@ -8,12 +8,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +54,6 @@ class EditActivity : AppCompatActivity() {
         val btnAddTransaction = findViewById<AppCompatButton>(R.id.btn_add_transaction)
         var oldTransaction: Transaction = Transaction("",sharedPreferences.getString("user_id",null),0,"outcome","","")
         var newTransaction: ApiTransaction = ApiTransaction(sharedPreferences.getString("user_id",null),0,"outcome","","")
-        var selectedCategory: Int = 2
         lateinit var categoryList: List<Category>
         val userId: String? = sharedPreferences.getString("user_id",null)
         val transactionId = intent.getStringExtra("TRANSACTION_ID")!!
@@ -87,12 +86,21 @@ class EditActivity : AppCompatActivity() {
                     newTransaction.category = selectedCategory.name?:"sfd"
                     newTransaction.categoryColor = selectedCategory.colour
                     newTransaction.categoryIcon = selectedCategory.icon
+                    oldTransaction.category = selectedCategory.name?:"sfd"
+                    oldTransaction.categoryColor = selectedCategory.colour
+                    oldTransaction.categoryIcon = selectedCategory.icon
                 }
 
             }
         }
 
         btnAddTransaction.setOnClickListener {
+            val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+            btnAddTransaction.visibility = View.GONE
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 10000)
             if(cbIncome.isChecked){
                 newTransaction.type = "income"
                 oldTransaction.type = "income"
@@ -104,12 +112,10 @@ class EditActivity : AppCompatActivity() {
             newTransaction.description = findViewById<EditText>(R.id.edt_description).text.toString()
             oldTransaction.description = findViewById<EditText>(R.id.edt_description).text.toString()
             newTransaction.date = oldTransaction.date
-            val dbInitializer = DBInitializer(application)
             ApiClient.getInstance().updateTransaction(transactionId,newTransaction).enqueue(object :
                 Callback<SingleResponse> {
                 override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
                     if (response.isSuccessful) {
-//                        dbInitializer.syncTransaction()
                         executorService.execute{ mTransactionDao.update(oldTransaction)}
                         val intent = Intent(this@EditActivity, MainActivity::class.java)
                         startActivity(intent)
@@ -120,7 +126,6 @@ class EditActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
-                    // Tangani kegagalan (misalnya, jaringan error)
                     Log.e("API", "Failure: ${t.message}")
                 }
             })

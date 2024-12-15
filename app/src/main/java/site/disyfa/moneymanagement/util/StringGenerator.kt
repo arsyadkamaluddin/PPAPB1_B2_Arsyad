@@ -7,12 +7,10 @@ import java.util.UUID
 
 class StringGenerator {
     companion object {
-        // Menggunakan UUID
         fun generateUUIDString(): String {
             return UUID.randomUUID().toString().replace("-", "").take(24)
         }
 
-        // Menggunakan Secure Random dan Hashing
         fun generateHashedString(): String {
             val randomBytes = ByteArray(16)
             SecureRandom().nextBytes(randomBytes)

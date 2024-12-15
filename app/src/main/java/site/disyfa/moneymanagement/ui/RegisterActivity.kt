@@ -3,7 +3,9 @@ package site.disyfa.moneymanagement.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -43,6 +45,12 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btnRegister.setOnClickListener {
+            val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+            btnRegister.visibility = View.GONE
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+            }, 10000)
             val fullname = edtFullname.text.toString()
             val email = edtEmail.text.toString()
             val password = edtPassword.text.toString()
@@ -67,13 +75,11 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
-                        // Tangani kegagalan (misalnya, jaringan error)
                         Log.e("API", "Failure: ${t.message}")
                     }
                 })
 
             } else {
-                // Jika ada field yang kosong, tampilkan pesan kesalahan atau apa pun yang Anda inginkan
                 Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             }
         }
